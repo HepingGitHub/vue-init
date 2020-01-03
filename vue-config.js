@@ -1,5 +1,26 @@
 const name = null;
 const prot = null;
+const CompressionWebpackPlugin = require('compression-webpack-plugin')
+
+const compress = new CompressionWebpackPlugin({
+  filename: info => {
+    return `${info.path}.gz${info.query}`
+  },
+  algorithm: 'gzip',
+  threshold: 10240,
+  test: new RegExp(
+    '\\.(' + ['js'].join('|') +
+    ')$'
+  ),
+  minRatio: 0.8,
+  deleteOriginalAssets: false
+})
+
+import path from 'path'
+
+function resolve(dir) {
+  return path.join(__dirname, dir)
+}
 module.exports = {
   publicPath: '/', // 部署应用的基本url
   outputDir: 'dist', // 打包文件名
@@ -10,7 +31,7 @@ module.exports = {
   devServer: {
 
     prot: prot, // 服务端口号
-    host: host, // 服务的地址
+    host: 9527, // 服务的地址
     hot: true, // 热加载
     open: true, // 是否自动打开浏览器
     https: false, // 是否开启https
@@ -23,6 +44,13 @@ module.exports = {
           '^/api': ''
         }
       }
+    },
+    before(app, server) {
+      app.get(/.*.(js)$/, (req, res, next) => {
+        req.url = req.url + '.gz';
+        res.set('Content-Encoding', 'gzip');
+        next();
+      })
     }
   },
 
@@ -33,15 +61,22 @@ module.exports = {
       alias: {
         '@': resolve('src')
       }
-    }
+    },
+    plugins: [compress]
   },
   // webpack配置
 
-  chainWebpack: config => {
-    // js代码切割  提高效率
+  chainWebpack(config) {
+    // 压缩js代码  提高效率
     config.optimization.minimize(true);
+    // 分割代码
     config.optimization.splitChunks({
       chunks: 'all'
+    });
+    // 用cdn方式引入
+    config.externals({
+      'vue': 'Vue',
+
     })
   },
 
@@ -55,6 +90,7 @@ module.exports = {
             @import "@/assets/css/variable.scss"
               `
       }
-    }
+    },
+    extract: true,
   }
 }

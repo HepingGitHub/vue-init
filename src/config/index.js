@@ -16,4 +16,4 @@ const modeUrlObject = {
   }
 }
 
-export default modeUrlObject[Process.env.NODE_ENV]
+export default modeUrlObject[process.env.NODE_ENV]

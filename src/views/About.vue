@@ -1,5 +1,14 @@
 <template>
   <div class="about">
-    <h1>This is an about page</h1>
+    <el-carousel v-for="item in 4"
+                 :key="item">
+
+    </el-carousel>
   </div>
 </template>
+<script>
+
+export default {
+
+}
+</script>

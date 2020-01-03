@@ -1,13 +1,14 @@
-import Cookies from 'js-cookies'
+import Cookies from 'js-cookie'
 
-export function setCookies(token) {
+const TokenKey = "zhangsan"
+export function setToken(token) {
   return Cookies.set(TokenKey, token)
 }
 
-export function getCookies() {
+export function getToken() {
   return Cookies.get(TokenKey)
 }
 
-export function removeCookies() {
+export function removeToken() {
   return Cookies.remove(TokenKey)
 }

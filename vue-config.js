@@ -1,3 +1,8 @@
+import path from 'path'
+
+function resolve(dir) {
+  return path.join(__dirname, dir)
+}
 const name = null;
 const prot = null;
 const CompressionWebpackPlugin = require('compression-webpack-plugin')
@@ -16,11 +21,7 @@ const compress = new CompressionWebpackPlugin({
   deleteOriginalAssets: false
 })
 
-import path from 'path'
 
-function resolve(dir) {
-  return path.join(__dirname, dir)
-}
 module.exports = {
   publicPath: '/', // 部署应用的基本url
   outputDir: 'dist', // 打包文件名
@@ -75,7 +76,7 @@ module.exports = {
     });
     // 用cdn方式引入
     config.externals({
-      'vue': 'Vue',
+      /*   'vue': 'Vue', */
 
     })
   },

@@ -1,11 +1,11 @@
 import {
   login,
   getUserInfo
-} from '../../api/user'
+} from '@/api/user'
 import {
   getToken,
   setToken
-} from '../../utils/auth'
+} from '@/utils/auth'
 
 const state = {
   token: getToken()

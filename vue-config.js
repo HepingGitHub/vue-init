@@ -30,7 +30,6 @@ module.exports = {
   productionSourceMap: false, // 不需要生产环境的source map，设置false加快生产环境构建
   //跨域配置
   devServer: {
-
     prot: prot, // 服务端口号
     host: 9527, // 服务的地址
     hot: true, // 热加载

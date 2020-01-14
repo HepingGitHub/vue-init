@@ -1,10 +1,10 @@
-import path from 'path'
+const path = require('path')
 
 function resolve(dir) {
   return path.join(__dirname, dir)
 }
-const name = null;
-const prot = null;
+const name = "后台管理系统";
+const port = 9527;
 const CompressionWebpackPlugin = require('compression-webpack-plugin')
 
 const compress = new CompressionWebpackPlugin({
@@ -30,8 +30,8 @@ module.exports = {
   productionSourceMap: false, // 不需要生产环境的source map，设置false加快生产环境构建
   //跨域配置
   devServer: {
-    prot: prot, // 服务端口号
-    host: 9527, // 服务的地址
+    port: port, // 服务端口号
+    /*   host: '192.168.1.7', // 服务的地址 */
     hot: true, // 热加载
     open: true, // 是否自动打开浏览器
     https: false, // 是否开启https
@@ -74,23 +74,25 @@ module.exports = {
       chunks: 'all'
     });
     // 用cdn方式引入
-    config.externals({
-      /*   'vue': 'Vue', */
+    /*  config.externals({
+       'vue': 'Vue',
 
-    })
+     }) */
   },
 
-  css: {
-    loaderOptions: {
-      sass: {
-        data: `
-            @import "@/assets/css/common.scss";
-            @import "@/assets/css/mixin.scss";
-            @import "@/assets/css/reset.scss";
-            @import "@/assets/css/variable.scss"
-              `
-      }
-    },
-    extract: true,
-  }
+  /*  css: {
+     loaderOptions: {
+       sass: {
+         data: `
+             @import "@/assets/css/common.scss";
+             @import "@/assets/css/mixin.scss";
+             @import "@/assets/css/reset.scss";
+             @import "@/assets/css/variable.scss"
+             @import "@/assets/css/index.scss"
+             @import "@/assets/css/transtion.scss"
+               `
+       }
+     },
+     extract: true,
+   } */
 }

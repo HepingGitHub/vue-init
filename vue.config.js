@@ -73,6 +73,22 @@ module.exports = {
     config.optimization.splitChunks({
       chunks: 'all'
     });
+     // set svg-sprite-loader
+     config.module
+     .rule('svg')
+     .exclude.add(resolve('src/icons'))
+     .end()
+   config.module
+     .rule('icons')
+     .test(/\.svg$/)
+     .include.add(resolve('src/icons'))
+     .end()
+     .use('svg-sprite-loader')
+     .loader('svg-sprite-loader')
+     .options({
+       symbolId: 'icon-[name]'
+     })
+     .end()
     // 用cdn方式引入
     /*  config.externals({
        'vue': 'Vue',
@@ -80,19 +96,20 @@ module.exports = {
      }) */
   },
 
-  /*  css: {
-     loaderOptions: {
-       sass: {
-         data: `
+  /* css: {
+    loaderOptions: {
+      sass: {
+        data: `
              @import "@/assets/css/common.scss";
              @import "@/assets/css/mixin.scss";
              @import "@/assets/css/reset.scss";
              @import "@/assets/css/variable.scss"
-             @import "@/assets/css/index.scss"
              @import "@/assets/css/transtion.scss"
+             @import "@/assets/css/index.scss"
+             
                `
-       }
-     },
-     extract: true,
-   } */
+      }
+    },
+    extract: true,
+  } */
 }

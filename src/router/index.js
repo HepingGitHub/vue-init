@@ -10,7 +10,7 @@ export const commonality = [{
     component: Layout,
     meta: {
       title: '首页',
-      icon: 'el-icon-s-home'
+      icon: 'dashboard'
     }
   },
   {
@@ -19,7 +19,7 @@ export const commonality = [{
     component: Layout,
     meta: {
       title: '荣誉中亚',
-      icon: 'el-icon-s-goods'
+      icon: 'dashboard'
     },
     children: [{
         path: 'issue-honor',
@@ -27,7 +27,7 @@ export const commonality = [{
         component: () => import("@/views/honor/index"),
         meta: {
           title: '发布事迹',
-          icon: 'el-icon-s-goods'
+          icon: 'jectkt'
         }
       },
       {
@@ -36,7 +36,7 @@ export const commonality = [{
         component: () => import("@/views/honor/honor-list"),
         meta: {
           title: '荣誉列表',
-          icon: 'el-icon-s-goods'
+          icon: 'dashboard'
         }
       }
     ]

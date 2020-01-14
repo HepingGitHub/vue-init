@@ -7,7 +7,7 @@ import Element from 'element-ui'
 import 'element-ui/lib/theme-chalk/index.css'
 
 import '@/assets/css/index.scss'
-
+import '@/icons' // icon
 Vue.use(Element, {
   size: 'mini'
 })

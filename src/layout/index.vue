@@ -5,7 +5,7 @@
 
                 <div class="main-container">
                         <app-main></app-main>
-                </div>
+                </div>  
            </div>
        </div>
 </template>
